@@ -99,12 +99,13 @@ export function Header() {
             </button>
           </nav>
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Hamburger - centrado vertical exacto con el logo */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
+            className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors my-0 ${
               isScrolled || !isHome ? "text-[#002350] hover:bg-gray-100" : "text-white hover:bg-white/10"
             }`}
+            style={{ margin: 0, padding: 0 }}
             aria-label="Menú de navegación"
           >
             {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

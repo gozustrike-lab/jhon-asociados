@@ -63,9 +63,10 @@ export function WhatsAppModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 30 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9998] flex items-center justify-center p-4 sm:p-6"
+            style={{ zIndex: 9998 }}
           >
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-[85%] sm:max-w-lg max-h-[90vh] overflow-y-auto">
               {/* Header */}
               <div className="bg-whatsapp p-4 rounded-t-2xl flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -86,7 +87,7 @@ export function WhatsAppModal() {
               </div>
 
               {/* Body */}
-              <div className="p-6 space-y-5">
+              <div className="p-4 sm:p-6 space-y-5">
                 {/* Service Selection */}
                 <div className="space-y-2">
                   <Label className="text-sm font-semibold text-navy">

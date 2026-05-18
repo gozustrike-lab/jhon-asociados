@@ -8,14 +8,12 @@ import { useWhatsAppStore } from "@/lib/whatsapp";
 
 function CounterItem({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const { count, ref } = useCountUp(value, 2500);
-
   return (
     <div className="text-center">
-      <span ref={ref} className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-        {count}
-        {suffix}
+      <span ref={ref} className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+        {count}{suffix}
       </span>
-      <p className="text-white/70 text-sm sm:text-base mt-1">{label}</p>
+      <p className="text-white/60 text-xs sm:text-sm mt-1 font-medium">{label}</p>
     </div>
   );
 }
@@ -24,32 +22,31 @@ export function Hero() {
   const { openModal } = useWhatsAppStore();
 
   return (
-    <section className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy-light/10 rounded-full blur-3xl" />
+    <section className="relative min-h-[100svh] flex items-center hero-gradient overflow-hidden">
+      {/* Decorative blurs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-[#481180]/15 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-[#008775]/10 rounded-full blur-[100px]" />
         <div
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+            backgroundSize: "32px 32px",
           }}
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 w-full">
         <div className="max-w-4xl">
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3.5 py-1.5 mb-5"
           >
-            <Shield className="w-4 h-4 text-emerald-light" />
-            <span className="text-white/90 text-sm font-medium">
+            <Shield className="w-3.5 h-3.5 text-[#00a996]" />
+            <span className="text-white/85 text-xs sm:text-sm font-medium tracking-wide">
               Especialistas Tributarios en Perú
             </span>
           </motion.div>
@@ -58,11 +55,11 @@ export function Hero() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+            transition={{ duration: 0.6, delay: 0.08 }}
+            className="text-[32px] sm:text-[44px] lg:text-[56px] xl:text-[64px] font-extrabold text-white leading-[1.1] tracking-tight"
           >
             Protege tu patrimonio.{" "}
-            <span className="text-emerald-light">
+            <span className="text-[#00a996]">
               Nosotros nos encargamos de SUNAT.
             </span>
           </motion.h2>
@@ -71,8 +68,8 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-lg sm:text-xl text-white/70 max-w-2xl leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.16 }}
+            className="mt-5 text-[15px] sm:text-lg text-white/60 max-w-2xl leading-relaxed"
           >
             Especialistas en asesoría tributaria, contabilidad integral y defensa
             ante fiscalizaciones. Más de 500 empresas confían en nosotros.
@@ -82,63 +79,63 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4"
+            transition={{ duration: 0.6, delay: 0.24 }}
+            className="mt-8 flex flex-col sm:flex-row gap-3"
           >
             <button
               onClick={() => openModal()}
-              className="inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp/90 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1fb855] text-white px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl text-[15px] sm:text-base font-bold transition-all shadow-lg shadow-[#25D366]/25 hover:shadow-xl hover:shadow-[#25D366]/30 active:scale-[0.98]"
             >
               <MessageCircle className="w-5 h-5" />
               Consultoría Gratuita
             </button>
             <Link
               href="/constitucion-de-empresas"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all backdrop-blur-sm"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white px-7 py-3.5 sm:px-8 sm:py-4 rounded-xl text-[15px] sm:text-base font-semibold transition-all backdrop-blur-sm"
             >
               Nuestros Servicios
-              <ArrowDown className="w-5 h-5" />
+              <ArrowDown className="w-4 h-4" />
             </Link>
           </motion.div>
 
           {/* Trust badges */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8 flex flex-wrap gap-4 text-white/50 text-sm"
+            className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-white/40 text-xs sm:text-sm"
           >
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-light" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#00a996]" />
               Sin compromiso
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-light" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#00a996]" />
               Respuesta inmediata
             </span>
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-light" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#00a996]" />
               Atención personalizada
             </span>
           </motion.div>
         </div>
 
-        {/* Animated Counters */}
+        {/* Counters */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 lg:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12"
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="mt-12 lg:mt-16 grid grid-cols-3 gap-3 sm:gap-6"
         >
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
-            <CounterItem value={500} suffix="+" label="Empresas Formalizadas" />
-          </div>
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
-            <CounterItem value={2} suffix="M+" label="en Multas Evitadas" />
-          </div>
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
-            <CounterItem value={98} suffix="%" label="de Satisfacción" />
-          </div>
+          {[
+            { value: 500, suffix: "+", label: "Empresas Formalizadas" },
+            { value: 2, suffix: "M+", label: "en Multas Evitadas" },
+            { value: 98, suffix: "%", label: "de Satisfacción" },
+          ].map((item) => (
+            <div key={item.label} className="bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-5 text-center">
+              <CounterItem value={item.value} suffix={item.suffix} label={item.label} />
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { useWhatsAppStore } from "@/lib/whatsapp";
 import Image from "next/image";
 
@@ -25,22 +25,19 @@ export function Header() {
 
   useEffect(() => {
     function handleScroll() {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 60);
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [isMobileOpen]);
 
   function isActive(href: string) {
@@ -48,139 +45,180 @@ export function Header() {
     return pathname.startsWith(href);
   }
 
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHome
-          ? "bg-white shadow-sm"
-          : "bg-transparent"
-      }`}
-      style={!isHome || isScrolled ? { borderBottom: "3px solid #002350" } : {}}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[70px] lg:h-[80px]">
-          {/* Logo - logo-header.webp sin márgenes, altura controlada */}
-          <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src={isScrolled || !isHome ? "/logo-header.webp" : "/logo-header-white.png"}
-              alt="Jhon & Asociados - Especialistas Tributarios"
-              width={173}
-              height={65}
-              priority
-              className="h-[50px] sm:h-[60px] lg:h-[65px] w-auto object-contain"
-              style={{ width: "auto" }}
-            />
-          </Link>
+  /* ─────────────────────────────────────────────
+     ESTADO SCROLLED: bg-white limpio, border sutil
+     ESTADO TRANSPARENTE: solo en HOME sin scroll
+  ───────────────────────────────────────────── */
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`px-4 py-2 text-[15px] font-medium rounded-lg transition-all duration-200 ${
-                  isActive(item.href)
-                    ? isScrolled || !isHome
-                      ? "text-[#008775] bg-[#008775]/5 border-b-2 border-[#008775]"
-                      : "text-white/90 bg-white/10 border-b-2 border-white/50"
-                    : isScrolled || !isHome
-                    ? "text-[#002350] hover:text-[#008775] hover:bg-[#002350]/5"
-                    : "text-white/80 hover:text-white hover:bg-white/10"
+  const scrolled = isScrolled || !isHome;
+
+  return (
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+          scrolled
+            ? "bg-white/98 backdrop-blur-lg shadow-[0_1px_3px_rgba(0,35,80,0.08)]"
+            : "bg-transparent"
+        }`}
+      >
+        {/* Línea de acento inferior — solo cuando está scrolled */}
+        {scrolled && (
+          <div className="h-[2px] w-full bg-gradient-to-r from-[#002350] via-[#481180] to-[#008775]" />
+        )}
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            className="flex items-center justify-between"
+            style={{ height: scrolled ? "60px" : undefined, minHeight: scrolled ? "60px" : "64px" }}
+          >
+            {/* ── Logo ── */}
+            <Link href="/" className="flex items-center shrink-0 relative z-10">
+              <Image
+                src={scrolled ? "/logo-header.webp" : "/logo-header-white.png"}
+                alt="Jhon & Asociados"
+                width={173}
+                height={65}
+                priority
+                className={`object-contain transition-all duration-500 ease-out ${
+                  scrolled
+                    ? "h-[38px] sm:h-[44px] lg:h-[48px]"
+                    : "h-[44px] sm:h-[52px] lg:h-[58px]"
+                }`}
+                style={{ width: "auto" }}
+              />
+            </Link>
+
+            {/* ── Desktop Nav ── */}
+            <nav className="hidden lg:flex items-center gap-1">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-4 py-2 text-[14px] font-medium transition-colors duration-200 rounded-md ${
+                    scrolled
+                      ? isActive(item.href)
+                        ? "text-[#008775]"
+                        : "text-[#002350]/80 hover:text-[#008775]"
+                      : isActive(item.href)
+                        ? "text-white"
+                        : "text-white/75 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                  {isActive(item.href) && (
+                    <span
+                      className={`absolute bottom-0 left-4 right-4 h-[2px] rounded-full transition-colors duration-300 ${
+                        scrolled ? "bg-[#008775]" : "bg-white"
+                      }`}
+                    />
+                  )}
+                </Link>
+              ))}
+              <button
+                onClick={() => openModal()}
+                className={`ml-4 px-6 py-2 rounded-lg text-[14px] font-bold transition-all duration-200 ${
+                  scrolled
+                    ? "bg-[#008775] hover:bg-[#006655] text-white shadow-sm hover:shadow-md"
+                    : "bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white border border-white/25"
                 }`}
               >
-                {item.label}
-              </Link>
-            ))}
+                Consultoría Gratuita
+              </button>
+            </nav>
+
+            {/* ── Mobile Hamburger ── */}
             <button
-              onClick={() => openModal()}
-              className="ml-4 bg-[#008775] hover:bg-[#006655] text-white px-6 py-2.5 rounded-lg text-[15px] font-bold transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
+              className={`lg:hidden relative z-10 flex items-center justify-center w-10 h-10 rounded-lg transition-all duration-200 ${
+                scrolled
+                  ? "text-[#002350] hover:bg-[#002350]/5 active:bg-[#002350]/10"
+                  : "text-white hover:bg-white/10 active:bg-white/20"
+              }`}
+              aria-label="Menú de navegación"
             >
-              Consultoría Gratuita
+              <Menu className="w-[22px] h-[22px]" strokeWidth={2} />
             </button>
-          </nav>
-
-          {/* Mobile Hamburger - centrado vertical exacto con el logo */}
-          <button
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-lg transition-colors my-0 ${
-              isScrolled || !isHome ? "text-[#002350] hover:bg-gray-100" : "text-white hover:bg-white/10"
-            }`}
-            style={{ margin: 0, padding: 0 }}
-            aria-label="Menú de navegación"
-          >
-            {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile Navigation Drawer */}
+      {/* ── Mobile Drawer ── */}
       <AnimatePresence>
         {isMobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             />
-            {/* Drawer */}
+
             <motion.div
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-[300px] bg-white shadow-2xl z-50 lg:hidden overflow-y-auto"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className="fixed top-0 right-0 bottom-0 w-[280px] max-w-[80vw] bg-white z-50 lg:hidden flex flex-col shadow-2xl"
             >
-              <div className="flex items-center justify-between p-4 border-b border-gray-100">
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between px-4 h-[56px] border-b border-gray-100 shrink-0">
                 <Image
                   src="/logo-header.webp"
                   alt="Jhon & Asociados"
-                  width={140}
-                  height={53}
-                  className="h-[45px] w-auto object-contain"
+                  width={120}
+                  height={45}
+                  className="h-[36px] w-auto object-contain"
                   style={{ width: "auto" }}
                 />
                 <button
                   onClick={() => setIsMobileOpen(false)}
-                  className="p-2 rounded-lg text-[#002350] hover:bg-gray-100 transition-colors"
+                  className="w-9 h-9 flex items-center justify-center rounded-lg text-[#002350] hover:bg-gray-100 transition-colors"
                   aria-label="Cerrar menú"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
-              <nav className="p-4 space-y-1">
-                {navItems.map((item) => (
+
+              {/* Drawer Nav */}
+              <nav className="flex-1 overflow-y-auto px-3 py-3">
+                {navItems.map((item, i) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileOpen(false)}
-                    className={`block px-4 py-3 text-[15px] font-medium rounded-lg transition-all duration-200 ${
+                    className={`flex items-center px-3 py-3 rounded-lg text-[15px] font-medium transition-colors ${
                       isActive(item.href)
-                        ? "text-[#008775] bg-[#008775]/5 border-l-3 border-[#008775]"
-                        : "text-[#002350] hover:bg-[#002350]/5 hover:text-[#008775]"
+                        ? "text-[#008775] bg-[#008775]/5"
+                        : "text-[#002350]/80 hover:bg-[#002350]/5"
                     }`}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <div className="pt-4 mt-4 border-t border-gray-100">
-                  <button
-                    onClick={() => {
-                      setIsMobileOpen(false);
-                      openModal();
-                    }}
-                    className="w-full bg-[#008775] hover:bg-[#006655] text-white px-5 py-3.5 rounded-lg text-[15px] font-bold transition-all duration-200 shadow-sm"
-                  >
-                    Consultoría Gratuita
-                  </button>
-                </div>
               </nav>
+
+              {/* Drawer Footer */}
+              <div className="px-4 pb-4 pt-2 border-t border-gray-100 shrink-0 space-y-2">
+                <button
+                  onClick={() => { setIsMobileOpen(false); openModal(); }}
+                  className="w-full bg-[#008775] hover:bg-[#006655] text-white py-3 rounded-lg text-[15px] font-bold transition-colors"
+                >
+                  Consultoría Gratuita
+                </button>
+                <a
+                  href="tel:+51943366950"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg text-[14px] font-medium text-[#002350]/70 hover:bg-gray-50 transition-colors"
+                >
+                  <Phone className="w-4 h-4" />
+                  +51 943 366 950
+                </a>
+              </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

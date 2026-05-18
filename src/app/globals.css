@@ -302,6 +302,19 @@ img, svg {
   transform: translateY(0) !important;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   MOBILE DRAWER — Hide WhatsApp + Active Link
+   ═══════════════════════════════════════════════════════════════════════ */
+html.mobile-menu-open .whatsapp-float {
+  display: none !important;
+}
+
+.drawer-nav-active {
+  background-color: rgba(0, 135, 117, 0.08) !important;
+  color: #002350 !important;
+  border-radius: 8px;
+}
+
 /* Pricing card highlight */
 .pricing-recommended {
   border: 2px solid #008775;

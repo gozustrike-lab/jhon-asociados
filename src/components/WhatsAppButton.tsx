@@ -10,7 +10,7 @@ export function WhatsAppButton() {
 
   return (
     <div
-      className="fixed bottom-[25px] right-[25px] flex items-end gap-2"
+      className="whatsapp-float fixed bottom-[25px] right-[25px] flex items-end gap-2"
       style={{ position: 'fixed', bottom: '25px', right: '25px', zIndex: 999999 }}
     >
       {/* Text tooltip on hover (desktop only) */}

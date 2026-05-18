@@ -35,10 +35,15 @@ export function Header() {
   useEffect(() => {
     if (isMobileOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.classList.add("mobile-menu-open");
     } else {
       document.body.style.overflow = "";
+      document.documentElement.classList.remove("mobile-menu-open");
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.classList.remove("mobile-menu-open");
+    };
   }, [isMobileOpen]);
 
   function isActive(href: string) {
@@ -151,7 +156,7 @@ export function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             />
 
@@ -187,10 +192,10 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileOpen(false)}
-                    className={`flex items-center px-3 py-3 rounded-lg text-[15px] font-medium transition-colors ${
+                    className={`flex items-center px-4 py-3 rounded-lg text-[15px] font-semibold transition-colors drawer-nav-link ${
                       isActive(item.href)
-                        ? "text-[#008775] bg-[#008775]/5"
-                        : "text-[#002350]/80 hover:bg-[#002350]/5"
+                        ? "drawer-nav-active"
+                        : "text-[#002350]/70 hover:bg-[#002350]/[0.04] hover:text-[#002350]"
                     }`}
                   >
                     {item.label}

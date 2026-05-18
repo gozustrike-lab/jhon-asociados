@@ -35,9 +35,9 @@ export function Footer() {
               <Image
                 src="/logo-header-white.png"
                 alt="Jhon & Asociados"
-                width={140}
-                height={53}
-                className="h-[50px] w-auto object-contain"
+                width={43}
+                height={48}
+                className="h-[42px] w-auto object-contain"
                 style={{ width: "auto" }}
               />
             </Link>

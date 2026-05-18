@@ -105,6 +105,16 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+  /* Custom selection color with brand teal */
+  ::selection {
+    background: rgba(0, 135, 117, 0.15);
+    color: #002350;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, [role="button"] {
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
 }
 
 /* ─── Smooth image rendering ─── */

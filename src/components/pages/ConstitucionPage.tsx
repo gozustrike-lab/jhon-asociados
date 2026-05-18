@@ -85,7 +85,7 @@ export function ConstitucionPage() {
   return (
     <SiteLayout>
       {/* Page Hero */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-20 hero-gradient relative">
+      <section className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 hero-gradient relative">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple/20 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald/20 rounded-full blur-3xl" />
@@ -95,7 +95,7 @@ export function ConstitucionPage() {
             <Link href="/" className="text-white/60 hover:text-white text-sm transition-colors mb-6 inline-flex items-center gap-1">
               Inicio <ChevronRight className="w-4 h-4" /> Constitución de Empresas
             </Link>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mt-4">
+            <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mt-3">
               Constitución de Empresas
             </h1>
             <p className="mt-4 text-lg sm:text-xl text-white/70 max-w-3xl leading-relaxed">
@@ -107,7 +107,7 @@ export function ConstitucionPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block text-emerald font-semibold text-sm tracking-wider uppercase mb-4">Paquetes y Precios</span>
@@ -174,7 +174,7 @@ export function ConstitucionPage() {
       </section>
 
       {/* Process Steps */}
-      <section className="py-20 lg:py-28 bg-gray-50/50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block text-emerald font-semibold text-sm tracking-wider uppercase mb-4">Proceso</span>
@@ -206,7 +206,7 @@ export function ConstitucionPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="inline-block text-emerald font-semibold text-sm tracking-wider uppercase mb-4">Preguntas Frecuentes</span>

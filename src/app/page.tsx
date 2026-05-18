@@ -93,16 +93,21 @@ function QuickSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-16 bg-gradient-to-r from-navy to-purple rounded-2xl p-8 lg:p-12 text-white text-center"
+          className="mt-16 rounded-2xl p-8 lg:p-12 text-white text-center relative overflow-hidden"
+          style={{ background: "linear-gradient(135deg, #002350 0%, #481180 50%, #008775 100%)" }}
         >
-          <h3 className="text-2xl lg:text-3xl font-bold mb-3">¿Necesitas orientación personalizada?</h3>
-          <p className="text-white/70 mb-6 max-w-2xl mx-auto">
+          {/* Decorative */}
+          <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/5 rounded-full blur-2xl" />
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-white/5 rounded-full blur-2xl" />
+
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 relative">¿Necesitas orientación personalizada?</h3>
+          <p className="text-white/70 mb-6 max-w-2xl mx-auto text-sm sm:text-base relative">
             Conversemos por WhatsApp y te recomendamos el servicio ideal según tu situación.
             Sin costo, sin compromiso.
           </p>
           <button
             onClick={() => openModal()}
-            className="inline-flex items-center gap-2 bg-whatsapp hover:bg-whatsapp/90 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+            className="relative inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1fb855] text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl text-[15px] sm:text-lg font-bold transition-all shadow-lg shadow-[#25D366]/20 hover:shadow-xl active:scale-[0.98]"
           >
             <MessageCircle className="w-5 h-5" />
             Consultoría Gratuita por WhatsApp

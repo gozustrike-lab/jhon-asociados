@@ -76,13 +76,13 @@ export function Header() {
               <Image
                 src={scrolled ? "/logo-header.webp" : "/logo-header-white.png"}
                 alt="Jhon & Asociados"
-                width={173}
-                height={65}
+                width={43}
+                height={48}
                 priority
                 className={`object-contain transition-all duration-500 ease-out ${
                   scrolled
-                    ? "h-[38px] sm:h-[44px] lg:h-[48px]"
-                    : "h-[44px] sm:h-[52px] lg:h-[58px]"
+                    ? "h-[34px] sm:h-[38px] lg:h-[42px]"
+                    : "h-[40px] sm:h-[46px] lg:h-[52px]"
                 }`}
                 style={{ width: "auto" }}
               />

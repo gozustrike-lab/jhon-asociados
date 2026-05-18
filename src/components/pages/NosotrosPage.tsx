@@ -70,7 +70,7 @@ export function NosotrosPage() {
   return (
     <SiteLayout>
       {/* Page Hero */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-20 hero-gradient relative">
+      <section className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 hero-gradient relative">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple/20 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald/20 rounded-full blur-3xl" />
@@ -80,7 +80,7 @@ export function NosotrosPage() {
             <Link href="/" className="text-white/60 hover:text-white text-sm transition-colors mb-6 inline-flex items-center gap-1">
               Inicio <ChevronRight className="w-4 h-4" /> Nosotros
             </Link>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mt-4">
+            <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mt-3">
               Jhon & <span className="text-emerald-light">Asociados</span>
             </h1>
             <p className="mt-4 text-lg sm:text-xl text-white/70 max-w-3xl leading-relaxed">

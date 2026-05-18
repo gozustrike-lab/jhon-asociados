@@ -25,9 +25,10 @@ export function Header() {
 
   useEffect(() => {
     function handleScroll() {
-      setIsScrolled(window.scrollY > 60);
+      setIsScrolled(window.scrollY > 50);
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -46,44 +47,38 @@ export function Header() {
   }
 
   /* ─────────────────────────────────────────────
-     ESTADO SCROLLED: bg-white limpio, border sutil
-     ESTADO TRANSPARENTE: solo en HOME sin scroll
+     scrolled = true → white solid bg + brand border
+     scrolled = false → transparent (only on HOME)
   ───────────────────────────────────────────── */
-
   const scrolled = isScrolled || !isHome;
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
           scrolled
-            ? "bg-white/98 backdrop-blur-lg shadow-[0_1px_3px_rgba(0,35,80,0.08)]"
+            ? "bg-white shadow-[0_1px_4px_rgba(0,35,80,0.08)]"
             : "bg-transparent"
         }`}
       >
-        {/* Línea de acento inferior — solo cuando está scrolled */}
-        {scrolled && (
-          <div className="h-[2px] w-full bg-gradient-to-r from-[#002350] via-[#481180] to-[#008775]" />
-        )}
+        {/* Brand accent line — always rendered but opacity-controlled (no layout shift) */}
+        <div
+          className={`w-full h-[3px] bg-gradient-to-r from-[#002350] via-[#481180] to-[#008775] transition-opacity duration-300 ${
+            scrolled ? "opacity-100" : "opacity-0"
+          }`}
+        />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="flex items-center justify-between"
-            style={{ height: scrolled ? "60px" : undefined, minHeight: scrolled ? "60px" : "64px" }}
-          >
+          <div className="flex items-center justify-between h-[60px]">
             {/* ── Logo ── */}
             <Link href="/" className="flex items-center shrink-0 relative z-10">
               <Image
                 src={scrolled ? "/logo-header.webp" : "/logo-header-white.png"}
                 alt="Jhon & Asociados"
-                width={43}
-                height={48}
+                width={160}
+                height={60}
                 priority
-                className={`object-contain transition-all duration-500 ease-out ${
-                  scrolled
-                    ? "h-[34px] sm:h-[38px] lg:h-[42px]"
-                    : "h-[40px] sm:h-[46px] lg:h-[52px]"
-                }`}
+                className="object-contain h-[40px] sm:h-[44px] lg:h-[46px] transition-opacity duration-300"
                 style={{ width: "auto" }}
               />
             </Link>
@@ -94,20 +89,20 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-4 py-2 text-[14px] font-medium transition-colors duration-200 rounded-md ${
+                  className={`relative px-3.5 py-2 text-[13.5px] font-medium transition-colors duration-200 rounded-md ${
                     scrolled
                       ? isActive(item.href)
                         ? "text-[#008775]"
                         : "text-[#002350]/80 hover:text-[#008775]"
                       : isActive(item.href)
                         ? "text-white"
-                        : "text-white/75 hover:text-white"
+                        : "text-white/80 hover:text-white"
                   }`}
                 >
                   {item.label}
                   {isActive(item.href) && (
                     <span
-                      className={`absolute bottom-0 left-4 right-4 h-[2px] rounded-full transition-colors duration-300 ${
+                      className={`absolute bottom-0 left-3.5 right-3.5 h-[2px] rounded-full transition-colors duration-300 ${
                         scrolled ? "bg-[#008775]" : "bg-white"
                       }`}
                     />
@@ -116,7 +111,7 @@ export function Header() {
               ))}
               <button
                 onClick={() => openModal()}
-                className={`ml-4 px-6 py-2 rounded-lg text-[14px] font-bold transition-all duration-200 ${
+                className={`ml-3 px-5 py-2.5 rounded-lg text-[13.5px] font-bold transition-all duration-200 ${
                   scrolled
                     ? "bg-[#008775] hover:bg-[#006655] text-white shadow-sm hover:shadow-md"
                     : "bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white border border-white/25"
@@ -136,7 +131,11 @@ export function Header() {
               }`}
               aria-label="Menú de navegación"
             >
-              <Menu className="w-[22px] h-[22px]" strokeWidth={2} />
+              {isMobileOpen ? (
+                <X className="w-[22px] h-[22px]" strokeWidth={2} />
+              ) : (
+                <Menu className="w-[22px] h-[22px]" strokeWidth={2} />
+              )}
             </button>
           </div>
         </div>
@@ -163,7 +162,7 @@ export function Header() {
               className="fixed top-0 right-0 bottom-0 w-[280px] max-w-[80vw] bg-white z-50 lg:hidden flex flex-col shadow-2xl"
             >
               {/* Drawer Header */}
-              <div className="flex items-center justify-between px-4 h-[56px] border-b border-gray-100 shrink-0">
+              <div className="flex items-center justify-between px-4 h-[60px] border-b border-gray-100 shrink-0">
                 <Image
                   src="/logo-header.webp"
                   alt="Jhon & Asociados"
@@ -183,7 +182,7 @@ export function Header() {
 
               {/* Drawer Nav */}
               <nav className="flex-1 overflow-y-auto px-3 py-3">
-                {navItems.map((item, i) => (
+                {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}

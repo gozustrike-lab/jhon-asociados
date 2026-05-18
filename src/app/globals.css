@@ -122,21 +122,27 @@ img, svg {
   image-rendering: auto;
 }
 
-/* Custom scrollbar — Jhon & Asociados brand colors */
-::-webkit-scrollbar {
+/* Custom scrollbar — Jhon & Asociados brand colors (all devices) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #002350 #f8fafc;
+}
+
+*::-webkit-scrollbar {
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: #f8fafc;
 }
 
-::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: #002350;
   border-radius: 10px;
+  border: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background: #481180;
 }
 

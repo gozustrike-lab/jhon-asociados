@@ -53,7 +53,7 @@ export function NosotrosPage() {
   const { ref: aboutRef, isVisible: aboutVisible } = useScrollAnimation(0.1);
   const { ref: credRef, isVisible: credVisible } = useScrollAnimation(0.1);
   const { openModal } = useWhatsAppStore();
-  const [formData, setFormData] = useState({ name: "", phone: "", email: "", service: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", service: "", message: "" });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -62,7 +62,7 @@ export function NosotrosPage() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const serviceName = services.find((s) => s.name === formData.service)?.name || formData.service || "General";
-    const message = `Hola Jhon & Asociados.\n\nNombre: ${formData.name}\nTeléfono: ${formData.phone}\nEmail: ${formData.email}\nServicio: ${serviceName}\nMensaje: ${formData.message}`;
+    const message = `Hola Jhon & Asociados.\n\nNombre: ${formData.name}\nEmail: ${formData.email}\nServicio: ${serviceName}\nMensaje: ${formData.message}`;
     const url = `https://api.whatsapp.com/send?phone=51943366950&text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   }
@@ -211,17 +211,10 @@ export function NosotrosPage() {
             >
               <h3 className="text-xl font-bold text-navy mb-6">Envíanos un mensaje</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-navy">Nombre completo *</label>
-                    <input name="name" value={formData.name} onChange={handleChange} required placeholder="Tu nombre"
-                      className="w-full h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald/50 focus:border-emerald transition-all" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-navy">Teléfono *</label>
-                    <input name="phone" value={formData.phone} onChange={handleChange} required placeholder="Ej: 943366950"
-                      className="w-full h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald/50 focus:border-emerald transition-all" />
-                  </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-navy">Nombre completo *</label>
+                  <input name="name" value={formData.name} onChange={handleChange} required placeholder="Tu nombre"
+                    className="w-full h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald/50 focus:border-emerald transition-all" />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">

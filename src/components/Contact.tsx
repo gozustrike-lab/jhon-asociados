@@ -46,7 +46,6 @@ export function Contact() {
   const { openModal } = useWhatsAppStore();
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
     email: "",
     service: "",
     message: "",
@@ -65,7 +64,6 @@ export function Contact() {
     const message = `Hola Jhon & Asociados.
 
 Nombre: ${formData.name}
-Teléfono: ${formData.phone}
 Email: ${formData.email}
 Servicio de interés: ${serviceName}
 Mensaje: ${formData.message}`;
@@ -115,29 +113,16 @@ Mensaje: ${formData.message}`;
           >
             <h3 className="text-xl font-bold text-navy mb-6">Envíanos un mensaje</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-navy">Nombre completo *</label>
-                  <input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Tu nombre"
-                    className="w-full h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald/50 focus:border-emerald transition-all"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-navy">Teléfono *</label>
-                  <input
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    placeholder="Ej: 943366950"
-                    className="w-full h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald/50 focus:border-emerald transition-all"
-                  />
-                </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-navy">Nombre completo *</label>
+                <input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Tu nombre"
+                  className="w-full h-10 rounded-lg border border-gray-300 bg-white px-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald/50 focus:border-emerald transition-all"
+                />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

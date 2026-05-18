@@ -16,6 +16,20 @@ export function FadeInView({ children, className = "", delay = 0, threshold = 0.
     const el = ref.current;
     if (!el) return;
 
+    // Immediately check if element is already in viewport (handles page refresh mid-scroll)
+    const rect = el.getBoundingClientRect();
+    const alreadyInView = (
+      rect.top < window.innerHeight &&
+      rect.bottom > 0 &&
+      rect.left < window.innerWidth &&
+      rect.right > 0
+    );
+
+    if (alreadyInView) {
+      el.classList.add("card-visible");
+      return; // Already visible, no need to observe
+    }
+
     // Start hidden
     el.classList.add("card-hidden");
     el.classList.remove("card-visible");

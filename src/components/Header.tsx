@@ -65,7 +65,7 @@ export function Header() {
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[56px] sm:h-[60px]">
+          <div className="flex items-center justify-between h-[64px] sm:h-[68px]">
 
             {/* ── Logo: full mark (isotype + text) ── */}
             <Link href="/" className="flex items-center shrink-0 relative z-10">
@@ -75,7 +75,7 @@ export function Header() {
                 width={260}
                 height={100}
                 priority
-                className="object-contain h-[32px] sm:h-[36px] lg:h-[38px] transition-opacity duration-300"
+                className="object-contain h-[40px] sm:h-[44px] lg:h-[48px] transition-opacity duration-300"
                 style={{ width: "auto" }}
               />
             </Link>
@@ -159,13 +159,13 @@ export function Header() {
               className="fixed top-0 right-0 bottom-0 w-[280px] max-w-[80vw] bg-white z-50 lg:hidden flex flex-col shadow-2xl"
             >
               {/* Drawer Header */}
-              <div className="flex items-center justify-between px-4 h-[56px] border-b border-gray-100 shrink-0">
+              <div className="flex items-center justify-between px-4 h-[64px] border-b border-gray-100 shrink-0">
                 <Image
                   src="/logo-header.webp"
                   alt="Jhon & Asociados"
                   width={200}
                   height={77}
-                  className="h-[30px] w-auto object-contain"
+                  className="h-[36px] w-auto object-contain"
                   style={{ width: "auto" }}
                 />
                 <button

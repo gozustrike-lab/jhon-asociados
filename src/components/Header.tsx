@@ -51,7 +51,7 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 right-0 z-50 overflow-visible transition-all duration-300 ease-in-out ${
           scrolled
             ? "bg-white shadow-[0_1px_4px_rgba(0,35,80,0.08)]"
             : "bg-transparent"
@@ -70,10 +70,10 @@ export function Header() {
         />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[60px] sm:h-[64px] md:h-[68px] lg:h-[76px]">
+          <div className="flex items-center justify-between py-3 sm:py-3.5 md:py-4 lg:py-5" style={{ overflow: 'visible' }}>
 
             {/* ── Logo: isotype + title (no slogan on desktop) ── */}
-            <Link href="/" className="flex items-center shrink-0 relative z-10 pt-px">
+            <Link href="/" className="flex items-center shrink-0 relative z-10">
               {/* Desktop (md+): logo SIN eslogan */}
               <Image
                 src={scrolled ? "/logo-header-noslogan.webp" : "/logo-header-white-noslogan.png"}
@@ -81,8 +81,8 @@ export function Header() {
                 width={500}
                 height={174}
                 priority
-                className="hidden md:block object-contain h-[42px] lg:h-[46px] xl:h-[50px] transition-opacity duration-300"
-                style={{ width: "auto" }}
+                className="hidden md:block object-contain h-[42px] lg:h-[50px] xl:h-[56px] transition-opacity duration-300"
+                style={{ width: "auto", display: "block" }}
               />
               {/* Mobile (<md): logo CON eslogan */}
               <Image
@@ -91,8 +91,8 @@ export function Header() {
                 width={500}
                 height={206}
                 priority
-                className="md:hidden object-contain h-[38px] sm:h-[42px] transition-opacity duration-300"
-                style={{ width: "auto" }}
+                className="md:hidden object-contain h-[38px] sm:h-[44px] transition-opacity duration-300"
+                style={{ width: "auto", display: "block" }}
               />
             </Link>
 
@@ -175,14 +175,14 @@ export function Header() {
               className="fixed top-0 right-0 bottom-0 w-[280px] max-w-[80vw] bg-white z-50 lg:hidden flex flex-col shadow-2xl"
             >
               {/* Drawer Header */}
-              <div className="flex items-center justify-between px-4 h-[64px] border-b border-gray-100 shrink-0">
+              <div className="flex items-center justify-between px-4 py-4 border-b border-gray-100 shrink-0" style={{ overflow: 'visible' }}>
                 <Image
                   src="/logo-header.webp"
                   alt="Jhon & Asociados"
                   width={400}
                   height={165}
-                  className="h-[38px] w-auto object-contain"
-                  style={{ width: "auto" }}
+                  className="h-[40px] w-auto object-contain"
+                  style={{ width: "auto", display: "block" }}
                 />
                 <button
                   onClick={() => setIsMobileOpen(false)}

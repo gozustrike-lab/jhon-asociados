@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Building2, Calculator, Shield, Users, TrendingUp, GraduationCap } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -9,63 +10,55 @@ const serviceCards = [
   {
     icon: Building2,
     title: "Constitución de Empresas",
-    description:
-      "Formaliza tu negocio desde S/450. SAC, EIRL, SRL. Incluye minuta, partida, RUC y Clave SOL.",
+    description: "Formaliza tu negocio desde S/380. SAC, EIRL, SRL. Incluye minuta, partida, RUC y Clave SOL.",
+    href: "/constitucion-de-empresas",
     serviceId: 1,
   },
   {
     icon: Calculator,
     title: "Contabilidad Integral",
-    description:
-      "Tercerización contable completa. Libros electrónicos, SIRE, planillas y declaraciones mensuales.",
+    description: "Tercerización contable completa. Libros electrónicos, SIRE, planillas y declaraciones mensuales.",
+    href: "/contabilidad-tributacion",
     serviceId: 4,
   },
   {
     icon: Shield,
     title: "Defensa Tributaria",
-    description:
-      "Atención urgente de cartas inductivas, fiscalizaciones y cobranzas coactivas de SUNAT.",
+    description: "Atención urgente de cartas inductivas, fiscalizaciones y cobranzas coactivas de SUNAT.",
+    href: "/defensa-tributaria",
     serviceId: 5,
   },
   {
     icon: Users,
     title: "Planillas y Laboral",
-    description:
-      "Administración de planillas, T-REGISTRO, PDT 601 y cumplimiento laboral total.",
+    description: "Administración de planillas, T-REGISTRO, PDT 601 y cumplimiento laboral total.",
+    href: "/contabilidad-tributacion",
     serviceId: 8,
   },
   {
     icon: TrendingUp,
     title: "Asesoría al Inversionista",
-    description:
-      "Orientación integral para inversores nacionales y extranjeros. Planificación fiscal estratégica.",
+    description: "Orientación integral para inversores nacionales y extranjeros. Planificación fiscal estratégica.",
+    href: "/contabilidad-tributacion",
     serviceId: 9,
   },
   {
     icon: GraduationCap,
     title: "Capacitaciones",
-    description:
-      "Programas de formación tributaria y empresarial para dueños y personal contable.",
+    description: "Programas de formación tributaria y empresarial para dueños y personal contable.",
+    href: "/contabilidad-tributacion",
     serviceId: 10,
   },
 ];
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 export function Services() {
@@ -75,7 +68,6 @@ export function Services() {
   return (
     <section id="servicios" className="py-20 lg:py-28 bg-gray-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div ref={ref} className="text-center max-w-3xl mx-auto mb-16">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -100,12 +92,10 @@ export function Services() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-4 text-lg text-muted-foreground"
           >
-            Soluciones integrales para proteger tu patrimonio y hacer crecer tu
-            negocio con tranquilidad.
+            Soluciones integrales para proteger tu patrimonio y hacer crecer tu negocio con tranquilidad.
           </motion.p>
         </div>
 
-        {/* Service Cards Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -124,23 +114,16 @@ export function Services() {
                   <Icon className="w-7 h-7 text-emerald" />
                 </div>
                 <h3 className="text-xl font-bold text-navy mb-3">{card.title}</h3>
-                <p className="text-muted-foreground leading-relaxed mb-5">
-                  {card.description}
-                </p>
-                <button
-                  onClick={() => openModal(card.serviceId)}
+                <p className="text-muted-foreground leading-relaxed mb-5">{card.description}</p>
+                <Link
+                  href={card.href}
                   className="inline-flex items-center text-emerald font-semibold text-sm hover:text-emerald-dark transition-colors group/btn"
                 >
-                  Cotizar ahora
-                  <svg
-                    className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                  Ver detalles
+                  <svg className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </Link>
               </motion.div>
             );
           })}

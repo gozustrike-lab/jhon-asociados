@@ -1,17 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Youtube, ArrowUp } from "lucide-react";
 import Image from "next/image";
 
 const quickLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Servicios", href: "#servicios" },
-  { label: "Constitución", href: "#constitucion" },
-  { label: "Contabilidad", href: "#contabilidad" },
-  { label: "Defensa Tributaria", href: "#defensa" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/" },
+  { label: "Constitución de Empresas", href: "/constitucion-de-empresas" },
+  { label: "Contabilidad y Tributación", href: "/contabilidad-tributacion" },
+  { label: "Defensa Tributaria", href: "/defensa-tributaria" },
+  { label: "Nosotros", href: "/nosotros" },
 ];
 
 const socialLinks = [
@@ -32,7 +31,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <a href="#inicio" className="flex items-center gap-3 mb-5">
+            <Link href="/" className="flex items-center gap-3 mb-5">
               <Image
                 src="/logo.png"
                 alt="Jhon & Asociados"
@@ -44,7 +43,7 @@ export function Footer() {
                 <h3 className="font-bold text-lg leading-tight">Jhon & Asociados</h3>
                 <p className="text-emerald-light text-xs">Especialistas Tributarios</p>
               </div>
-            </a>
+            </Link>
             <p className="text-white/60 text-sm leading-relaxed">
               Protegemos tu patrimonio con asesoría tributaria, contabilidad integral
               y defensa ante SUNAT. Más de 500 empresas confían en nosotros.
@@ -54,17 +53,17 @@ export function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-wider text-white/80 mb-4">
-              Enlaces Rápidos
+              Navegación
             </h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-white/60 hover:text-emerald-light text-sm transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -76,23 +75,36 @@ export function Footer() {
               Servicios
             </h4>
             <ul className="space-y-2.5">
-              {[
-                "Constitución de Empresas",
-                "Contabilidad Integral",
-                "Defensa Tributaria",
-                "Planillas y Laboral",
-                "Asesoría al Inversionista",
-                "Capacitaciones",
-              ].map((service) => (
-                <li key={service}>
-                  <a
-                    href="#servicios"
-                    className="text-white/60 hover:text-emerald-light text-sm transition-colors"
-                  >
-                    {service}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link href="/constitucion-de-empresas" className="text-white/60 hover:text-emerald-light text-sm transition-colors">
+                  Constitución de Empresas
+                </Link>
+              </li>
+              <li>
+                <Link href="/contabilidad-tributacion" className="text-white/60 hover:text-emerald-light text-sm transition-colors">
+                  Contabilidad Integral
+                </Link>
+              </li>
+              <li>
+                <Link href="/defensa-tributaria" className="text-white/60 hover:text-emerald-light text-sm transition-colors">
+                  Defensa Tributaria
+                </Link>
+              </li>
+              <li>
+                <Link href="/contabilidad-tributacion" className="text-white/60 hover:text-emerald-light text-sm transition-colors">
+                  Planillas y Laboral
+                </Link>
+              </li>
+              <li>
+                <Link href="/contabilidad-tributacion" className="text-white/60 hover:text-emerald-light text-sm transition-colors">
+                  Asesoría al Inversionista
+                </Link>
+              </li>
+              <li>
+                <Link href="/contabilidad-tributacion" className="text-white/60 hover:text-emerald-light text-sm transition-colors">
+                  Capacitaciones
+                </Link>
+              </li>
             </ul>
           </div>
 

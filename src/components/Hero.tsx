@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown, MessageCircle, Shield, CheckCircle2 } from "lucide-react";
 import { useCountUp } from "@/hooks/use-count-up";
@@ -23,13 +24,12 @@ export function Hero() {
   const { openModal } = useWhatsAppStore();
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
+    <section className="relative min-h-screen flex items-center hero-gradient overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald/20 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy-light/10 rounded-full blur-3xl" />
-        {/* Grid pattern */}
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -92,13 +92,13 @@ export function Hero() {
               <MessageCircle className="w-5 h-5" />
               Consultoría Gratuita
             </button>
-            <a
-              href="#servicios"
+            <Link
+              href="/constitucion-de-empresas"
               className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all backdrop-blur-sm"
             >
               Nuestros Servicios
               <ArrowDown className="w-5 h-5" />
-            </a>
+            </Link>
           </motion.div>
 
           {/* Trust badges */}
@@ -141,17 +141,6 @@ export function Hero() {
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <a href="#servicios" className="text-white/40 hover:text-white/70 transition-colors">
-          <ArrowDown className="w-6 h-6" />
-        </a>
-      </motion.div>
     </section>
   );
 }

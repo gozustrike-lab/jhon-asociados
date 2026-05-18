@@ -1,0 +1,229 @@
+"use client";
+
+import Link from "next/link";
+import { SiteLayout } from "@/components/SiteLayout";
+import { motion } from "framer-motion";
+import {
+  AlertTriangle, Shield, Gavel, MessageCircle, Clock, ArrowRight,
+  ChevronRight, CheckCircle2, FileWarning, Scale, Zap
+} from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useWhatsAppStore } from "@/lib/whatsapp";
+
+const urgentCards = [
+  {
+    icon: FileWarning,
+    title: "Cartas Inductivas",
+    description: "SUNAT te envió una carta inductiva porque detectó inconsistencias en tu información tributaria. No responder a tiempo puede derivar en multas de hasta el 100% del tributo omitido.",
+    cta: "Atender mi Carta Inductiva",
+    serviceId: 5,
+    urgency: "Tienes 10 días hábiles para responder. Actúa ahora.",
+    price: "Desde S/ 200",
+    details: [
+      "Análisis completo de la carta recibida",
+      "Identificación de las inconsistencias detectadas por SUNAT",
+      "Preparación de la respuesta fundamentada con documentación",
+      "Presentación de descargos ante SUNAT",
+      "Seguimiento hasta la resolución del caso",
+    ],
+  },
+  {
+    icon: Shield,
+    title: "Fiscalizaciones",
+    description: "SUNAT seleccionó tu empresa para una auditoría tributaria. Una fiscalización mal manejada puede resultar en determinaciones de deuda significativas y cobranzas coactivas.",
+    cta: "Defender mi Empresa",
+    serviceId: 6,
+    urgency: "No esperes a que termine el plazo de fiscalización.",
+    price: "Consultar según caso",
+    details: [
+      "Revisión integral de la orden de fiscalización",
+      "Organización y preparación de toda la documentación requerida",
+      "Acompañamiento durante las actuaciones fiscales",
+      "Elaboración de observaciones y descargos",
+      "Estrategia de defensa tributaria personalizada",
+    ],
+  },
+  {
+    icon: Gavel,
+    title: "Cobranza Coactiva",
+    description: "Tienes deudas tributarias en etapa de cobranza coactiva. SUNAT puede embargar tus cuentas bancarias, bienes y afectar gravemente la operación de tu negocio.",
+    cta: "Negociar mi Deuda",
+    serviceId: 7,
+    urgency: "Evita embargos y afectaciones a tu patrimonio.",
+    price: "Consultar según deuda",
+    details: [
+      "Análisis de la deuda tributaria total",
+      "Verificación de la validez de los valores reclamados",
+      "Solicitud de fraccionamiento o aplazamiento",
+      "Presentación de recursos de reclamación",
+      "Negociación directa con SUNAT para obtener las mejores condiciones",
+    ],
+  },
+];
+
+const whyUs = [
+  { icon: Zap, text: "Respuesta inmediata: nos comunicamos contigo en menos de 1 hora" },
+  { icon: Shield, text: "Equipo especializado con experiencia en defensa tributaria real" },
+  { icon: Scale, text: "Conocimiento profundo de la normativa tributaria peruana vigente" },
+  { icon: CheckCircle2, text: "Seguimiento constante hasta la resolución final de tu caso" },
+];
+
+export function DefensaPage() {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+  const { openModal } = useWhatsAppStore();
+
+  return (
+    <SiteLayout>
+      {/* Urgent Hero */}
+      <section className="pt-24 pb-16 lg:pt-32 lg:pb-20 bg-gradient-to-br from-red-900 via-navy to-navy relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-urgent via-gold to-urgent" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <Link href="/" className="text-white/60 hover:text-white text-sm transition-colors mb-6 inline-flex items-center gap-1">
+              Inicio <ChevronRight className="w-4 h-4" /> Defensa Tributaria
+            </Link>
+            <div className="inline-flex items-center gap-2 bg-urgent/20 border border-urgent/30 rounded-full px-4 py-2 mb-6">
+              <span className="w-2.5 h-2.5 bg-urgent rounded-full urgent-pulse" />
+              <span className="text-urgent font-semibold text-sm uppercase tracking-wider">Situación Urgente</span>
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              ¿SUNAT te <span className="text-urgent">fiscalizó</span>?
+            </h1>
+            <p className="mt-4 text-lg sm:text-xl text-white/70 max-w-3xl leading-relaxed">
+              No dejes pasar el plazo. Cada día cuenta para defender tu patrimonio. Nuestro equipo de
+              especialistas tributarios actúa con la urgencia que tu caso requiere.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <button onClick={() => openModal(5)} className="inline-flex items-center justify-center gap-2 bg-urgent hover:bg-urgent/90 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all shadow-lg">
+                <MessageCircle className="w-5 h-5" /> Consulta Urgente por WhatsApp
+              </button>
+              <a href="tel:+51943366950" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all">
+                <AlertTriangle className="w-5 h-5" /> Llamar Ahora
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Urgent Service Cards */}
+      <section className="py-20 lg:py-28 bg-gray-50/50 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 via-transparent to-red-50/30 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div ref={ref} className="text-center max-w-3xl mx-auto mb-16">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={isVisible ? { opacity: 1, y: 0 } : {}}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy">
+                Elige tu <span className="text-urgent">situación</span>
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Cada caso es diferente. Selecciona tu situación y te ayudamos de inmediato.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="space-y-8">
+            {urgentCards.map((card, i) => {
+              const Icon = card.icon;
+              return (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.1 * i }}
+                  className="bg-white rounded-2xl border-2 border-urgent/20 shadow-sm hover:shadow-lg hover:border-urgent/40 transition-all overflow-hidden"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                    <div className="p-6 lg:p-8 lg:col-span-1">
+                      <div className="w-14 h-14 bg-urgent/10 rounded-xl flex items-center justify-center mb-5">
+                        <Icon className="w-7 h-7 text-urgent" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-navy mb-2">{card.title}</h3>
+                      <span className="inline-block bg-emerald/10 text-emerald font-bold text-sm px-3 py-1 rounded-full mb-3">{card.price}</span>
+                      <div className="flex items-center gap-2 text-urgent bg-urgent/5 rounded-lg p-3">
+                        <Clock className="w-4 h-4 shrink-0 urgent-pulse" />
+                        <span className="text-sm font-medium">{card.urgency}</span>
+                      </div>
+                    </div>
+                    <div className="p-6 lg:p-8 lg:col-span-2 border-t lg:border-t-0 lg:border-l border-gray-100">
+                      <p className="text-muted-foreground leading-relaxed mb-6">{card.description}</p>
+                      <h4 className="text-sm font-bold text-navy mb-3 uppercase tracking-wider">¿Qué incluye?</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                        {card.details.map((d) => (
+                          <div key={d} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-4 h-4 text-emerald mt-0.5 shrink-0" />
+                            <span className="text-sm text-muted-foreground">{d}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <button
+                        onClick={() => openModal(card.serviceId)}
+                        className="inline-flex items-center gap-2 bg-urgent hover:bg-urgent/90 text-white px-8 py-3.5 rounded-xl font-semibold text-sm transition-all shadow-md hover:shadow-lg"
+                      >
+                        {card.cta}
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Us */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block text-emerald font-semibold text-sm tracking-wider uppercase mb-4">Nuestra Ventaja</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy">
+              ¿Por qué <span className="text-purple">confiar en nosotros</span>?
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {whyUs.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 * i }}
+                  className="flex items-start gap-4 p-5 rounded-xl bg-gray-50 border border-gray-100"
+                >
+                  <div className="w-10 h-10 bg-emerald/10 rounded-lg flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-emerald" />
+                  </div>
+                  <span className="text-muted-foreground leading-relaxed">{item.text}</span>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-r from-urgent to-navy">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+            El tiempo es tu peor enemigo frente a SUNAT
+          </h2>
+          <p className="text-white/70 mb-8 text-lg">
+            Cuanto antes nos contactes, mejores serán las opciones de defensa para tu caso. Consulta sin costo.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onClick={() => openModal(5)} className="inline-flex items-center justify-center gap-2 bg-white text-navy px-8 py-4 rounded-xl text-lg font-bold transition-all shadow-lg hover:shadow-xl">
+              <MessageCircle className="w-5 h-5" /> Atender mi Caso Ahora
+            </button>
+            <Link href="/contabilidad-tributacion" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all">
+              Ver Servicios de Contabilidad
+            </Link>
+          </div>
+        </div>
+      </section>
+    </SiteLayout>
+  );
+}

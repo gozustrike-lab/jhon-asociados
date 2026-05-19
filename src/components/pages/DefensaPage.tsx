@@ -10,6 +10,7 @@ import {
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useWhatsAppStore } from "@/lib/whatsapp";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { SectionDivider } from "@/components/SectionDivider";
 
 const urgentCards = [
   {
@@ -109,6 +110,7 @@ export function DefensaPage() {
       </section>
 
       {/* Urgent Service Cards */}
+      <SectionDivider from="#7f1d1d" to="#f9fafb" />
       <section className="py-20 lg:py-28 bg-gray-50/50 relative">
         <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 via-transparent to-red-50/30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -173,6 +175,7 @@ export function DefensaPage() {
       </section>
 
       {/* Why Us */}
+      <SectionDivider from="#f9fafb" to="#ffffff" />
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -204,6 +207,7 @@ export function DefensaPage() {
       </section>
 
       {/* CTA */}
+      <SectionDivider from="#ffffff" to="#991b1b" />
       <section className="py-20 bg-gradient-to-r from-urgent to-navy">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">

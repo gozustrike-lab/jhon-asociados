@@ -10,6 +10,7 @@ import {
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useWhatsAppStore, services } from "@/lib/whatsapp";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { SectionDivider } from "@/components/SectionDivider";
 import { useState } from "react";
 
 const columns = [
@@ -93,6 +94,7 @@ export function NosotrosPage() {
       </section>
 
       {/* Mission & Vision */}
+      <SectionDivider from="#001528" to="#ffffff" />
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={aboutRef} className="text-center max-w-3xl mx-auto mb-16">
@@ -152,6 +154,7 @@ export function NosotrosPage() {
       </section>
 
       {/* Credentials */}
+      <SectionDivider from="#ffffff" to="#f9fafb" />
       <section className="py-20 lg:py-28 bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={credRef} className="bg-navy rounded-2xl p-8 lg:p-12 relative overflow-hidden">
@@ -190,6 +193,7 @@ export function NosotrosPage() {
       </section>
 
       {/* Contact Form */}
+      <SectionDivider from="#f9fafb" to="#ffffff" />
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">

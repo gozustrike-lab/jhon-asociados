@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Building2, Calculator, Shield, CheckCircle2, MessageCircle } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useWhatsAppStore } from "@/lib/whatsapp";
+import { SectionDivider } from "@/components/SectionDivider";
 
 function QuickSection() {
   const { ref, isVisible } = useScrollAnimation(0.1);
@@ -122,7 +123,9 @@ export default function Home() {
   return (
     <SiteLayout>
       <Hero />
+      <SectionDivider from="#001528" to="#f9fafb" />
       <Services />
+      <SectionDivider from="#f9fafb" to="#ffffff" />
       <QuickSection />
     </SiteLayout>
   );

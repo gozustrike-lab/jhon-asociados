@@ -408,18 +408,18 @@ html.mobile-menu-open .whatsapp-float {
   }
 }
 
-/* Desktop (1024px+): horizontal image, face framed on right side */
+/* Desktop (1024px+): horizontal image, face framed on right side — lower position for full face + hair */
 @media (min-width: 1024px) {
   .hero-photo-bg::before {
     background-image: url('/jhon-hero-oficina.webp');
-    background-position: right 15% center;
+    background-position: right 12% top 22%;
   }
 }
 
-/* Ultra-wide screens: keep face centered-right */
+/* Ultra-wide screens: keep face visible with margin */
 @media (min-width: 1440px) {
   .hero-photo-bg::before {
-    background-position: right 18% center;
+    background-position: right 15% top 20%;
   }
 }
 
@@ -555,11 +555,11 @@ html.mobile-menu-open .whatsapp-float {
    ═══════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
 
-  /* Content: flex column, top-aligned */
+  /* Content: flex column, top-aligned with generous breathing */
   .hero-content {
     justify-content: flex-start;
-    padding-top: 72px;
-    padding-bottom: 16px;
+    padding-top: 80px;
+    padding-bottom: 24px;
   }
 
   /* Text block: full width */
@@ -567,56 +567,52 @@ html.mobile-menu-open .whatsapp-float {
     max-width: 100%;
   }
 
-  /* H1: 26px, tight line-height, pure white */
-  .hero-text-col h1 {
-    font-size: 26px !important;
-    line-height: 1.15 !important;
+  /* Badge: refined spacing */
+  .hero-badge {
+    font-size: 10px;
+    padding: 5px 12px;
+    margin-bottom: 20px;
+  }
+
+  /* H1: 28px, good line-height, breathing room */
+  .hero-h1 {
+    font-size: 28px !important;
+    line-height: 1.18 !important;
     color: #ffffff;
   }
 
-  /* Subtitle: 14px, light gray, compact */
-  .hero-text-col p {
-    font-size: 14px !important;
-    margin-top: 8px;
-    color: rgba(248, 250, 252, 0.75);
-    line-height: 1.5 !important;
+  /* Subtitle: 13.5px, light, breathable */
+  .hero-subtitle {
+    font-size: 13.5px !important;
+    margin-top: 16px !important;
+    color: rgba(248, 250, 252, 0.80);
+    line-height: 1.55 !important;
   }
 
-  /* Primary CTA: full width, thumb-friendly */
-  .hero-text-col button {
+  /* CTAs: full width, generous padding */
+  .hero-ctas button,
+  .hero-ctas a {
     width: 100%;
     justify-content: center;
-    padding-top: 13px;
-    padding-bottom: 13px;
+    padding-top: 14px;
+    padding-bottom: 14px;
     font-size: 14px;
   }
 
-  /* Secondary CTA: also full width */
-  .hero-text-col a {
-    width: 100%;
-    justify-content: center;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    font-size: 14px;
-  }
-
-  /* Badge: compact */
-  .hero-text-col .inline-flex {
+  /* Trust badges: compact, clean spacing */
+  .hero-trust {
+    gap: 6px 14px;
     font-size: 10px;
-    padding: 5px 10px;
-    margin-bottom: 12px;
+    margin-top: 16px !important;
   }
 
-  /* Trust badges: compact, 2 rows */
-  .hero-text-col .flex.flex-wrap {
-    gap: 6px 12px;
-    font-size: 10px;
-    margin-top: 12px;
+  /* Counters: compact, breathing */
+  .hero-counters {
+    margin-top: 24px !important;
+    gap: 8px;
   }
 
-  /* Counters: compact, minimal */
-  .hero-text-col + .grid {
-    margin-top: 16px;
+  .hero-counters .grid {
     gap: 6px;
   }
 }

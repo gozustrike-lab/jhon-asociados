@@ -22,12 +22,12 @@ export function Hero() {
   const { openModal } = useWhatsAppStore();
 
   return (
-    <section className="relative min-h-[85vh] lg:min-h-[92vh] flex items-center overflow-hidden hero-fade-top">
+    <section className="relative flex items-center overflow-hidden hero-fade-top">
 
-      {/* ═══ LAYER 0 — Background Photograph (Jhon, center-right on desktop) ═══ */}
+      {/* ═══ LAYER 0 — Background Photograph (100% cover, face-framed) ═══ */}
       <div className="hero-photo-bg" aria-hidden="true" />
 
-      {/* ═══ LAYER 1 — Asymmetric Brand Overlay (dark left → transparent right) ═══ */}
+      {/* ═══ LAYER 1 — Asymmetric Brand Overlay ═══ */}
       <div className="hero-brand-overlay" aria-hidden="true" />
 
       {/* ═══ LAYER 2 — Decorative Blurs + Dot Pattern ═══ */}
@@ -43,8 +43,8 @@ export function Hero() {
         />
       </div>
 
-      {/* ═══ LAYER 20 — Content (left column on desktop, full width on mobile) ═══ */}
-      <div className="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 w-full">
+      {/* ═══ LAYER 20 — Content (left column desktop / top mobile) ═══ */}
+      <div className="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="hero-text-col">
 
           {/* Badge */}

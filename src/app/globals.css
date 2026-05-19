@@ -571,14 +571,20 @@ html.mobile-menu-open .whatsapp-float {
 
 /* ═══════════════════════════════════════════════════════════════════════
    HERO MOBILE — 100% Vertical Full-Screen (max-width: 768px)
-   Text top ~40%, Jhon's face breathes in bottom ~60%
+   Independent from desktop rules. Text pushed well below navbar.
+   Counters hidden to reduce crowding.
    ═══════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
 
-  /* Content: flex column, top-aligned with generous breathing */
+  /* Section: force top alignment — override any desktop centering */
+  .hero-fade-top {
+    align-items: flex-start !important;
+  }
+
+  /* Content: flex column, top-aligned, generous breathing below navbar */
   .hero-content {
-    justify-content: flex-start;
-    padding-top: 60px !important;
+    justify-content: flex-start !important;
+    padding-top: 100px !important;
     padding-bottom: 24px;
   }
 
@@ -587,14 +593,14 @@ html.mobile-menu-open .whatsapp-float {
     max-width: 100%;
   }
 
-  /* Badge: refined spacing */
+  /* Badge: compact spacing */
   .hero-badge {
     font-size: 10px;
     padding: 5px 12px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
-  /* H1: 26px, compact, clear breathing */
+  /* H1: 26px, tight, breathing below */
   .hero-h1 {
     font-size: 26px !important;
     line-height: 1.15 !important;
@@ -602,7 +608,7 @@ html.mobile-menu-open .whatsapp-float {
     color: #ffffff;
   }
 
-  /* Subtitle: 14px, light, clean */
+  /* Subtitle: 14px, clean */
   .hero-subtitle {
     font-size: 14px !important;
     margin-top: 0 !important;
@@ -620,20 +626,15 @@ html.mobile-menu-open .whatsapp-float {
     font-size: 14px;
   }
 
-  /* Trust badges: compact, clean spacing */
+  /* Trust badges: compact, clean */
   .hero-trust {
     gap: 5px 12px;
     font-size: 10px;
     margin-top: 14px !important;
   }
 
-  /* Counters: compact, breathing */
+  /* Counters: HIDDEN on mobile — reduce content crowding */
   .hero-counters {
-    margin-top: 20px !important;
-    gap: 8px;
-  }
-
-  .hero-counters > div {
-    gap: 6px;
+    display: none !important;
   }
 }

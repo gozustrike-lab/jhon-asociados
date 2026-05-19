@@ -22,7 +22,7 @@ export function Hero() {
   const { openModal } = useWhatsAppStore();
 
   return (
-    <section className="relative flex items-center overflow-hidden hero-fade-top">
+    <section className="relative flex overflow-hidden hero-fade-top">
 
       {/* ═══ LAYER 0 — Background Photograph (100% cover, face-framed) ═══ */}
       <div className="hero-photo-bg" aria-hidden="true" />

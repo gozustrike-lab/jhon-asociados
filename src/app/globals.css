@@ -105,10 +105,14 @@ html {
   body {
     @apply bg-background text-foreground;
   }
-  /* Custom selection color with brand teal */
+  /* Custom selection color — visible on light AND dark backgrounds */
   ::selection {
-    background: rgba(0, 135, 117, 0.15);
-    color: #002350;
+    background: rgba(0, 135, 117, 0.45);
+    color: #ffffff;
+  }
+  ::-moz-selection {
+    background: rgba(0, 135, 117, 0.45);
+    color: #ffffff;
   }
 }
 

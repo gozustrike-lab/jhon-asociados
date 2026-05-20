@@ -86,24 +86,47 @@ export function ConstitucionPage() {
 
   return (
     <SiteLayout>
-      {/* Page Hero */}
-      <section className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 hero-gradient relative hero-fade-top">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald/20 rounded-full blur-3xl" />
+      {/* ═══ SUBPAGE HERO — Corporate Photograph + Brand Overlay ═══ */}
+      <section className="subpage-hero relative overflow-hidden">
+        {/* Layer 0: Background photo */}
+        <div className="absolute inset-0 z-0">
+          <div className="subpage-hero-photo" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Layer 1: Brand overlay */}
+        <div className="absolute inset-0 z-1 subpage-hero-overlay" />
+        {/* Layer 2: Decorative blurs */}
+        <div className="absolute inset-0 z-2 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-60 h-60 bg-[#008775]/15 rounded-full blur-3xl" />
+          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-[#481180]/15 rounded-full blur-3xl" />
+        </div>
+        {/* Layer 20: Content */}
+        <div className="subpage-hero-content relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <Link href="/" className="text-white/60 hover:text-white text-sm transition-colors mb-6 inline-flex items-center gap-1">
+            <Link href="/" className="subpage-hero-breadcrumb inline-flex items-center gap-1 text-white/60 hover:text-white text-sm transition-colors mb-5">
               Inicio <ChevronRight className="w-4 h-4" /> Constitución de Empresas
             </Link>
-            <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mt-3">
-              Constitución de Empresas
+            <h1 className="subpage-hero-title text-[28px] sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+              Constitución de <span className="text-[#00a996]">Empresas</span>
             </h1>
-            <p className="mt-4 text-lg sm:text-xl text-white/70 max-w-3xl leading-relaxed">
-              Empieza con pie derecho. Formaliza tu negocio con paquetes claros, precios
-              transparentes y un proceso acompañado de principio a fin. Sin letra pequeña.
+            <p className="subpage-hero-desc mt-5 text-[15px] sm:text-lg text-white/75 max-w-2xl leading-relaxed font-light">
+              Empieza con pie derecho. Formaliza tu negocio con paquetes claros,
+              precios transparentes y un proceso acompañado de principio a fin.
             </p>
+            <div className="subpage-hero-ctas mt-8 flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => openModal()}
+                className="inline-flex items-center justify-center gap-2.5 bg-[#008775] hover:bg-[#006655] text-white px-7 py-3.5 rounded-xl text-[15px] font-bold transition-all shadow-lg shadow-[#008775]/30 hover:shadow-xl active:scale-[0.98]"
+              >
+                Constituir mi Empresa
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <Link
+                href="/nosotros-contacto"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/25 text-white px-7 py-3.5 rounded-xl text-[15px] font-semibold transition-all backdrop-blur-sm"
+              >
+                Contáctanos
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

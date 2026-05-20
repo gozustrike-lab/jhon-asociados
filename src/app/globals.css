@@ -647,3 +647,100 @@ html.mobile-menu-open .whatsapp-float {
     display: none !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SUBPAGE HERO — Internal pages (Constitución, Contabilidad, Defensa, etc.)
+   75vh desktop, 100dvh mobile. Photo background + brand overlay.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Container */
+.subpage-hero {
+  width: 100%;
+  min-height: 75vh;
+  position: relative;
+  background-color: #001528;
+}
+
+/* Layer 0: Photo background */
+.subpage-hero-photo {
+  width: 100%;
+  height: 100%;
+  background-image: url('/jhon-constitucion.webp');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+/* Layer 1: Brand overlay — horizontal gradient with controlled opacity */
+.subpage-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 35, 80, 0.94) 0%,
+    rgba(72, 17, 128, 0.45) 50%,
+    rgba(0, 35, 80, 0.94) 100%
+  );
+  pointer-events: none;
+}
+
+/* Layer 20: Content — vertically centered */
+.subpage-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  min-height: 75vh;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+/* ─── Subpage Hero Mobile ─── */
+@media (max-width: 768px) {
+  .subpage-hero {
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+
+  .subpage-hero-photo {
+    background-position: center bottom;
+  }
+
+  .subpage-hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 35, 80, 0.95) 0%,
+      rgba(0, 35, 80, 0.70) 40%,
+      rgba(72, 17, 128, 0.30) 100%
+    );
+  }
+
+  .subpage-hero-content {
+    min-height: 100dvh;
+    height: 100dvh;
+    padding-top: 100px !important;
+    padding-bottom: 30px;
+    justify-content: flex-start !important;
+  }
+
+  .subpage-hero-title {
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+  }
+
+  .subpage-hero-desc {
+    font-size: 14px !important;
+    margin-top: 14px !important;
+  }
+
+  .subpage-hero-ctas button,
+  .subpage-hero-ctas a {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .subpage-hero-ctas {
+    gap: 10px !important;
+  }
+}

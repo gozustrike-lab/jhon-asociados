@@ -84,3 +84,26 @@ Stage Summary:
 - Mobile: 100dvh full screen, 100px padding-top, center-bottom background position
 - Ken Burns animation applied for premium feel
 - Consistent with ConstitucionPage hero structure and styling
+
+---
+Task ID: 7
+Agent: Main Agent
+Task: Integrate jhon-defensa.png into Defensa Tributaria y SUNAT subpage hero
+
+Work Log:
+- Copied jhon-defensa.png from upload/ to public/
+- Converted PNG (2.1MB) to WebP (44KB) using sharp-cli for performance
+- Replaced old gradient-only hero in DefensaPage.tsx with full photographic subpage hero (5-layer architecture)
+- Added .subpage-hero-overlay-defensa class in globals.css with darker navy-only gradient (no purple): rgba(0,35,80,0.96) → 0.60 → 0.96 for high-conversion urgency feel
+- Added mobile variant of defensa overlay: vertical gradient 0.97 → 0.78 → 0.50
+- Preserved urgency elements: red accent line, "Situación Urgente" badge with pulse, red WhatsApp CTA, phone CTA
+- Updated SectionDivider from #7f1d1d to #001528 to match dark photo hero background
+- Used inline style to override background-image for defensa-specific photo while reusing all existing subpage-hero CSS classes
+- Build verified: zero errors, all 8 pages generated successfully
+
+Stage Summary:
+- DefensaPage.tsx now uses corporate photograph hero with dark high-conversion overlay
+- PC: 75vh min-height, center-right background position, dense navy overlay for drama
+- Mobile: 100dvh full screen, 100px padding-top, center-bottom background position
+- Red urgency accent line preserved at z-30 above all layers
+- Consistent with other subpage hero structures but with unique darker overlay variant

@@ -76,33 +76,55 @@ export function DefensaPage() {
 
   return (
     <SiteLayout>
-      {/* Urgent Hero */}
-      <section className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 bg-gradient-to-br from-red-900 via-navy to-navy relative overflow-hidden hero-fade-top">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-urgent via-gold to-urgent" />
+      {/* ═══ SUBPAGE HERO — Defensa Tributaria: Urgent Photograph + Dark Overlay ═══ */}
+      <section className="subpage-hero relative overflow-hidden">
+        {/* Top urgency accent line */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-urgent via-gold to-urgent z-30" />
+        {/* Layer 0: Background photo — Jhon making stop signal */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="subpage-hero-photo"
+            style={{ backgroundImage: "url('/jhon-defensa.webp')" }}
+          />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Layer 1: Dark high-conversion overlay (denser navy, no purple) */}
+        <div className="absolute inset-0 z-1 subpage-hero-overlay-defensa" />
+        {/* Layer 2: Decorative blurs */}
+        <div className="absolute inset-0 z-2 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-60 h-60 bg-[#DC2626]/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-[#002350]/20 rounded-full blur-3xl" />
+        </div>
+        {/* Layer 20: Content */}
+        <div className="subpage-hero-content relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <Link href="/" className="text-white/60 hover:text-white text-sm transition-colors mb-6 inline-flex items-center gap-1">
+            <Link href="/" className="subpage-hero-breadcrumb inline-flex items-center gap-1 text-white/60 hover:text-white text-sm transition-colors mb-5">
               Inicio <ChevronRight className="w-4 h-4" /> Defensa Tributaria
             </Link>
             <div className="inline-flex items-center gap-2 bg-urgent/20 border border-urgent/30 rounded-full px-4 py-2 mb-6">
               <span className="w-2.5 h-2.5 bg-urgent rounded-full urgent-pulse" />
               <span className="text-urgent font-semibold text-sm uppercase tracking-wider">Situación Urgente</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="subpage-hero-title text-[28px] sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
               ¿SUNAT te <span className="text-urgent">fiscalizó</span>?
             </h1>
-            <p className="mt-4 text-lg sm:text-xl text-white/70 max-w-3xl leading-relaxed">
+            <p className="subpage-hero-desc mt-5 text-[15px] sm:text-lg text-white/75 max-w-2xl leading-relaxed font-light">
               No dejes pasar el plazo. Cada día cuenta para defender tu patrimonio. Nuestro equipo de
               especialistas tributarios actúa con la urgencia que tu caso requiere.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <button onClick={() => openModal(5)} className="inline-flex items-center justify-center gap-2 bg-urgent hover:bg-urgent/90 text-white px-8 py-4 rounded-xl text-lg font-bold transition-all shadow-lg">
-                <MessageCircle className="w-5 h-5" /> Consulta Urgente por WhatsApp
+            <div className="subpage-hero-ctas mt-8 flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => openModal(5)}
+                className="inline-flex items-center justify-center gap-2.5 bg-urgent hover:bg-urgent/90 text-white px-7 py-3.5 rounded-xl text-[15px] font-bold transition-all shadow-lg shadow-urgent/40 hover:shadow-xl active:scale-[0.98]"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Consulta Urgente por WhatsApp
               </button>
-              <a href="tel:+51943366950" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all">
-                <AlertTriangle className="w-5 h-5" /> Llamar Ahora
+              <a
+                href="tel:+51943366950"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/25 text-white px-7 py-3.5 rounded-xl text-[15px] font-semibold transition-all backdrop-blur-sm"
+              >
+                <AlertTriangle className="w-4 h-4" />
+                Llamar Ahora
               </a>
             </div>
           </motion.div>
@@ -110,7 +132,7 @@ export function DefensaPage() {
       </section>
 
       {/* Urgent Service Cards */}
-      <SectionDivider from="#7f1d1d" to="#f9fafb" />
+      <SectionDivider from="#001528" to="#f9fafb" />
       <section className="py-20 lg:py-28 bg-gray-50/50 relative">
         <div className="absolute inset-0 bg-gradient-to-br from-red-50/50 via-transparent to-red-50/30 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,46 +1,56 @@
 "use client";
 
-import { useEffect } from "react";
+import { useRef, useCallback } from "react";
 
 /**
  * Animated "Ver más" scroll indicator for hero sections.
- * Uses a global querySelectorAll approach to find the next sibling
- * section and smooth-scroll to it on click.
+ * Uses React onClick + DOM traversal to find the next REAL content section
+ * (skipping tiny dividers like SectionDivider which are < 20px).
  */
 export function ScrollDownIndicator() {
-  useEffect(() => {
-    function attachListeners() {
-      document.querySelectorAll<HTMLElement>(".scroll-down-indicator").forEach((indicator) => {
-        // Avoid duplicate listeners
-        if (indicator.dataset.bound === "true") return;
-        indicator.dataset.bound = "true";
+  const indicatorRef = useRef<HTMLDivElement>(null);
 
-        indicator.addEventListener("click", function () {
-          // Find the parent hero section
-          const currentHero = this.closest("section") || this.closest("header") || this.parentElement;
-          // Select the next sibling section
-          const nextSection = currentHero?.nextElementSibling;
+  const handleClick = useCallback(() => {
+    const indicator = indicatorRef.current;
+    if (!indicator) return;
 
-          if (nextSection) {
-            nextSection.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
+    // Find the parent hero section (works on Home and all subpages)
+    const currentHero = indicator.closest("section") || indicator.closest("header");
+    if (!currentHero) return;
+
+    // Traverse siblings until we find a real content section (> 20px tall)
+    // This skips SectionDivider (12px), whitespace text nodes, etc.
+    let nextEl = currentHero.nextElementSibling as HTMLElement | null;
+    while (nextEl && nextEl.offsetHeight < 20) {
+      nextEl = nextEl.nextElementSibling as HTMLElement | null;
     }
 
-    attachListeners();
-    // Re-attach after any dynamic navigation
-    const observer = new MutationObserver(attachListeners);
-    observer.observe(document.body, { childList: true, subtree: true });
+    if (nextEl) {
+      // Wow effect: subtle sink animation before scroll
+      indicator.style.transform = "translate(-50%, 5px)";
+      indicator.style.opacity = "0.5";
 
-    return () => observer.disconnect();
+      setTimeout(() => {
+        nextEl.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        // Restore indicator to original state
+        setTimeout(() => {
+          indicator.style.transform = "translate(-50%, 0)";
+          indicator.style.opacity = "1";
+        }, 300);
+      }, 150);
+    }
   }, []);
 
   return (
-    <div className="scroll-down-indicator">
+    <div
+      ref={indicatorRef}
+      className="scroll-down-indicator"
+      onClick={handleClick}
+    >
       <span>Ver más</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"

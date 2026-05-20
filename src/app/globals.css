@@ -650,18 +650,30 @@ html.mobile-menu-open .whatsapp-float {
 
 /* ═══════════════════════════════════════════════════════════════════════
    SUBPAGE HERO — Internal pages (Constitución, Contabilidad, Defensa, Nosotros)
-   85vh desktop, 90vh mobile. Photo background + brand overlay.
-   Face-framed: right top (PC) / center 15% (Mobile).
+   100dvh full bleed immersive — matches Home hero architecture.
+   Face-framed: right top (PC) / center top (Mobile).
    ═══════════════════════════════════════════════════════════════════════ */
 
-/* Container — unified 85vh premium height */
+/* Container — full bleed immersive (100dvh like Home hero) */
 .subpage-hero {
   width: 100%;
-  min-height: 85vh !important;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-height: none;
   background-size: cover !important;
   background-position: right top !important; /* Reveals face on desktop */
   position: relative;
   background-color: #001528;
+}
+
+/* Safari fallback for dvh */
+@supports not (height: 100dvh) {
+  .subpage-hero {
+    height: 100vh;
+    min-height: 100vh;
+  }
 }
 
 /* Layer 0: Photo background */
@@ -697,36 +709,39 @@ html.mobile-menu-open .whatsapp-float {
   pointer-events: none;
 }
 
-/* Layer 20: Content — vertically centered, 85vh breathing room */
+/* Layer 20: Content — vertically centered, full bleed height */
 .subpage-hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  min-height: 85vh !important;
   padding-top: 80px;
   padding-bottom: 40px;
 }
 
 /* ─── Subpage Hero Mobile — EXCLUSIVE: no home-hero rules here ─── */
 @media (max-width: 768px) {
-  /* Selector exclusivo para cabeceras de subpáginas internas */
+  /* Full bleed 100dvh — matches Home hero immersive experience */
   .subpage-hero {
     width: 100% !important;
-    min-height: 85vh !important; /* Full bleed — eliminates white gap below */
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
     background-size: cover !important;
-    background-position: center center !important; /* Centers photo face on smartphones */
+    background-position: center top !important; /* Prioritizes face/upper body on portrait phones */
   }
 
+  /* Photo layer matches parent positioning */
   .subpage-hero-photo {
-    background-position: center center !important;
+    background-position: center top !important;
   }
 
+  /* Mobile overlay: vertical gradient — dark top (text) → translucent bottom (person visible) */
   .subpage-hero-overlay {
     background: linear-gradient(
       180deg,
       rgba(0, 35, 80, 0.95) 0%,
-      rgba(0, 35, 80, 0.70) 40%,
+      rgba(0, 35, 80, 0.70) 45%,
       rgba(72, 17, 128, 0.30) 100%
     );
   }
@@ -741,14 +756,14 @@ html.mobile-menu-open .whatsapp-float {
     );
   }
 
-  /* Selector exclusivo para la caja de textos y botones de subpáginas */
+  /* Content: centered vertically — same approach as Home hero */
   .subpage-hero-content {
-    min-height: 85vh !important;
+    height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important; /* Distributes text top, CTAs bottom */
-    padding-top: 120px !important;  /* Air from transparent navbar */
-    padding-bottom: 60px !important; /* Separates buttons from bottom edge */
+    justify-content: center !important;
+    padding-top: 60px !important;
+    padding-bottom: 40px !important;
   }
 
   .subpage-hero-title {

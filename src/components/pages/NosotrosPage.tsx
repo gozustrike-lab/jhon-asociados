@@ -5,7 +5,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { motion } from "framer-motion";
 import {
   Target, Eye, CheckCircle2, Monitor, Award, Users, MessageCircle,
-  ChevronRight, Mail, MapPin, Clock, Send
+  ChevronRight, Mail, MapPin, Clock, Send, ArrowRight
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { useWhatsAppStore, services } from "@/lib/whatsapp";
@@ -71,24 +71,51 @@ export function NosotrosPage() {
 
   return (
     <SiteLayout>
-      {/* Page Hero */}
-      <section className="pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-20 hero-gradient relative hero-fade-top">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald/20 rounded-full blur-3xl" />
+      {/* ═══ SUBPAGE HERO — Institutional Photograph + Brand Overlay ═══ */}
+      <section className="subpage-hero relative overflow-hidden">
+        {/* Layer 0: Background photo — Jhon institutional portrait */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="subpage-hero-photo"
+            style={{ backgroundImage: "url('/jhon-nosotros.webp')" }}
+          />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Layer 1: Brand overlay — standard corporate gradient */}
+        <div className="absolute inset-0 z-1 subpage-hero-overlay" />
+        {/* Layer 2: Decorative blurs */}
+        <div className="absolute inset-0 z-2 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-60 h-60 bg-[#008775]/15 rounded-full blur-3xl" />
+          <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-[#481180]/15 rounded-full blur-3xl" />
+        </div>
+        {/* Layer 20: Content */}
+        <div className="subpage-hero-content relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <Link href="/" className="text-white/60 hover:text-white text-sm transition-colors mb-6 inline-flex items-center gap-1">
+            <Link href="/" className="subpage-hero-breadcrumb inline-flex items-center gap-1 text-white/60 hover:text-white text-sm transition-colors mb-5">
               Inicio <ChevronRight className="w-4 h-4" /> Nosotros
             </Link>
-            <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mt-3">
-              Jhon & <span className="text-emerald-light">Asociados</span>
+            <h1 className="subpage-hero-title text-[28px] sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+              Jhon & <span className="text-[#00a996]">Asociados</span>
             </h1>
-            <p className="mt-4 text-lg sm:text-xl text-white/70 max-w-3xl leading-relaxed">
+            <p className="subpage-hero-desc mt-5 text-[15px] sm:text-lg text-white/75 max-w-2xl leading-relaxed font-light">
               Transparencia, tecnología y resultados. Conoce al equipo que protege el patrimonio
               de más de 500 empresas en Perú.
             </p>
+            <div className="subpage-hero-ctas mt-8 flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => openModal()}
+                className="inline-flex items-center justify-center gap-2.5 bg-[#008775] hover:bg-[#006655] text-white px-7 py-3.5 rounded-xl text-[15px] font-bold transition-all shadow-lg shadow-[#008775]/30 hover:shadow-xl active:scale-[0.98]"
+              >
+                Consultoría Gratuita
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <a
+                href="mailto:contacto@jhonyasociados.com"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/25 text-white px-7 py-3.5 rounded-xl text-[15px] font-semibold transition-all backdrop-blur-sm"
+              >
+                <Mail className="w-4 h-4" />
+                Escríbenos
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

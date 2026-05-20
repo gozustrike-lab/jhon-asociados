@@ -62,3 +62,25 @@ Stage Summary:
 - GitHub repo: https://github.com/gozustrike-lab/jhon-asociados
 - All route links updated consistently across the project
 - Zero compilation errors, ready for Vercel deployment
+
+---
+Task ID: 6
+Agent: Main Agent
+Task: Integrate jhon-contabilidad.png into Contabilidad y Tributación subpage hero
+
+Work Log:
+- Copied jhon-contabilidad.png from upload/ to public/
+- Converted PNG (2MB) to WebP (61KB) using sharp-cli for performance
+- Replaced old gradient-only hero in ContabilidadPage.tsx with full photographic subpage hero (5-layer architecture matching ConstitucionPage pattern)
+- Added ArrowRight import to ContabilidadPage.tsx
+- Updated SectionDivider color from #002350 to #001528 to match dark photo hero
+- Added Ken Burns animation to .subpage-hero-photo class in globals.css
+- Used inline style to override background-image for contabilidad-specific photo while reusing all existing subpage-hero CSS classes
+- Build verified: zero errors, all 8 pages generated successfully
+
+Stage Summary:
+- ContabilidadPage.tsx now uses corporate photograph hero with brand overlay gradient
+- PC: 75vh min-height, center-right background position, horizontal brand overlay
+- Mobile: 100dvh full screen, 100px padding-top, center-bottom background position
+- Ken Burns animation applied for premium feel
+- Consistent with ConstitucionPage hero structure and styling

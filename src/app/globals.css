@@ -669,6 +669,7 @@ html.mobile-menu-open .whatsapp-float {
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;
+  animation: hero-ken-burns 25s ease-in-out infinite;
 }
 
 /* Layer 1: Brand overlay — horizontal gradient with controlled opacity */

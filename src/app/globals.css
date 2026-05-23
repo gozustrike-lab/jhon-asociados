@@ -725,24 +725,24 @@ html.mobile-menu-open .whatsapp-float {
   animation: hero-ken-burns 25s ease-in-out infinite;
 }
 
-/* Layer 1: Brand overlay — horizontal gradient with controlled opacity */
+/* Layer 1: Brand overlay — horizontal gradient: dark left (text) → transparent right (face visible) */
 .subpage-hero-overlay {
   background: linear-gradient(
     90deg,
-    rgba(0, 35, 80, 0.94) 0%,
-    rgba(72, 17, 128, 0.45) 50%,
-    rgba(0, 35, 80, 0.94) 100%
+    rgba(0, 35, 80, 0.90) 0%,
+    rgba(0, 35, 80, 0.55) 35%,
+    rgba(72, 17, 128, 0.06) 100%
   );
   pointer-events: none;
 }
 
-/* Defensa Tributaria — High-conversion darker overlay (no purple, all navy) */
+/* Defensa Tributaria — Darker left (urgency) but transparent right (face visible) */
 .subpage-hero-overlay-defensa {
   background: linear-gradient(
     90deg,
-    rgba(0, 35, 80, 0.96) 0%,
-    rgba(0, 35, 80, 0.60) 50%,
-    rgba(0, 35, 80, 0.96) 100%
+    rgba(0, 35, 80, 0.93) 0%,
+    rgba(0, 35, 80, 0.50) 35%,
+    rgba(0, 35, 80, 0.06) 100%
   );
   pointer-events: none;
 }
@@ -835,23 +835,23 @@ html.mobile-menu-open .whatsapp-float {
     background-position: 70% 15% !important; /* Rostro centrado en la mitad superior del celular */
   }
 
-  /* Mobile overlay: vertical gradient — dark top (text) → translucent bottom (person visible) */
+  /* Mobile overlay: vertical gradient — dark top (text) → very translucent bottom (face clearly visible) */
   .subpage-hero-overlay {
     background: linear-gradient(
       180deg,
-      rgba(0, 35, 80, 0.95) 0%,
-      rgba(0, 35, 80, 0.70) 45%,
-      rgba(72, 17, 128, 0.30) 100%
+      rgba(0, 35, 80, 0.92) 0%,
+      rgba(0, 35, 80, 0.55) 40%,
+      rgba(72, 17, 128, 0.10) 100%
     );
   }
 
-  /* Defensa mobile — denser navy for urgency */
+  /* Defensa mobile — navy top (urgency) → very translucent bottom (face visible) */
   .subpage-hero-overlay-defensa {
     background: linear-gradient(
       180deg,
-      rgba(0, 35, 80, 0.97) 0%,
-      rgba(0, 35, 80, 0.78) 40%,
-      rgba(0, 35, 80, 0.50) 100%
+      rgba(0, 35, 80, 0.95) 0%,
+      rgba(0, 35, 80, 0.60) 40%,
+      rgba(0, 35, 80, 0.15) 100%
     );
   }
 

@@ -25,7 +25,7 @@ const serviceCards = [
   {
     icon: Shield,
     title: "Asesoría Tributaria",
-    description: "Asesoría tributaria personalizada, consultoría fiscal, optimización de cargas y planificación estratégica para tu negocio.",
+    description: "Atención urgente de cartas inductivas, fiscalizaciones y cobranzas coactivas de SUNAT.",
     href: "/defensa-tributaria-sunat",
     serviceId: 5,
   },

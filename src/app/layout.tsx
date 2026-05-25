@@ -39,18 +39,19 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Jhon & Asociados | Especialistas Tributarios",
+    title: "Jhon & Asociados | Especialistas Tributarios y Contables en Perú",
     description:
-      "Protege tu patrimonio con los mejores especialistas tributarios del Perú. Constitución, contabilidad y defensa ante SUNAT.",
+      "Protege tu patrimonio frente a la SUNAT. Contabilidad integral, constitución de empresas y defensa urgente ante fiscalizaciones. Más de 20 años de experiencia. Consultoría gratuita.",
     type: "website",
     locale: "es_PE",
     siteName: "Jhon & Asociados",
+    url: "https://jhonyasociados.com",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-banner-jhon.png?v=2.1",
         width: 1200,
         height: 630,
-        alt: "Jhon & Asociados - Especialistas Tributarios en Perú",
+        alt: "Jhon & Asociados - Especialistas Tributarios y Contables en Perú",
         type: "image/png",
       },
     ],
@@ -59,8 +60,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jhon & Asociados | Especialistas Tributarios",
     description:
-      "Protege tu patrimonio. Nosotros nos encargamos de SUNAT. Consultoría gratuita.",
-    images: ["/og-image.png"],
+      "Asesoría contable integral y defensa urgente ante SUNAT en el Perú. Protegemos el crecimiento de tu empresa con más de 20 años de experiencia.",
+    images: ["/og-banner-jhon.png?v=2.1"],
   },
   robots: {
     index: true,

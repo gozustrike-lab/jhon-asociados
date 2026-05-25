@@ -37,7 +37,7 @@ const slides: SlideData[] = [
     h1: (
       <>
         Protegemos tu{" "}
-        <span className="text-[#00a996]">Empresa.</span>
+        <span className="text-[#00a996]">Empresa.</span>{" "}
         <br className="hidden sm:block" />
         Aseguramos tu{" "}
         <span className="text-[#00a996]">Patrimonio.</span>
@@ -54,7 +54,7 @@ const slides: SlideData[] = [
     badge: "Constitución de Empresas",
     h1: (
       <>
-        Constituye tu Empresa.
+        Constituye tu Empresa.{" "}
         <br className="hidden sm:block" />
         <span className="text-[#00a996]">Precios a Consultar.</span>
       </>
@@ -78,7 +78,7 @@ const slides: SlideData[] = [
     badge: "Contabilidad Integral",
     h1: (
       <>
-        Tu Contabilidad en Regla.
+        Tu Contabilidad en Regla.{" "}
         <br className="hidden sm:block" />
         <span className="text-[#00a996]">Sin multas de SUNAT.</span>
       </>
@@ -98,7 +98,7 @@ const slides: SlideData[] = [
     badge: "Defensa Tributaria Urgente",
     h1: (
       <>
-        Escudo Legal y Tributario
+        Escudo Legal y Tributario{" "}
         <br className="hidden sm:block" />
         Ante <span className="text-[#00a996]">Fiscalizaciones.</span>
       </>
@@ -118,7 +118,7 @@ const slides: SlideData[] = [
     badge: "Más de 20 años de Experiencia",
     h1: (
       <>
-        Especialistas Tributarios con
+        Especialistas Tributarios con{" "}
         <br className="hidden sm:block" />
         <span className="text-[#00a996]">más de 20 años de Éxito.</span>
       </>
